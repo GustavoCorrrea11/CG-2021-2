@@ -126,6 +126,13 @@ export function cleanGUI() {
 
 //luces predeterminadas
 function setupLights() {
+  const light = new THREE.DirectionalLight( 0xFFFFFF );
+  const helper = new THREE.DirectionalLightHelper( light, 5 );
+  scene.add( helper );
+  const pointLight = new THREE.PointLight( 0xff0000, 1, 100 );
+  pointLight.position.set( 10, 10, 10 );
+  scene.add( pointLight ); 
+
   const ambient = new THREE.AmbientLight(0xffffff, 0.4);
   scene.add(ambient);
 
@@ -218,7 +225,7 @@ _createLightGUI(SpotLight.GUISpotLight);
         SpotLightSelected.position.z = SpotLightSelected.GUISpotLight.posZ;
         SpotLightSelected.angle = SpotLightSelected.GUISpotLight.angle;
       });
-      }
+  }
 
 
 function animate() {
